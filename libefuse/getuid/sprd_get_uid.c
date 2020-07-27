@@ -46,7 +46,6 @@
 #define DEV_NODE "/dev/sprd_otp_ap_efuse"
 #endif
 
-#define UID_LENGTH   (50)
 #define NUM          (1024)
 #define SERIAL_LEN_MAX           (256)
 
@@ -69,7 +68,7 @@ static int uidval_file_read(unsigned char *read_data)
 
     fd = fopen(DEV_UIDVAL, "r");
     if (fd == NULL) {
-        ALOGE("%s()->Line:%d; %s open error. ERRORNO:%S\n",
+        ALOGE("%s()->Line:%d; %s open error. ERRORNO:%s\n",
                 __FUNCTION__, __LINE__, DEV_UIDVAL, errno);
         return EFUSE_OPEN_FAILED_ERR;
     }
