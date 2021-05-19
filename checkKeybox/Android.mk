@@ -23,10 +23,15 @@ ifeq ($(strip $(TARGET_ARCH)),arm64)
 CHECKKEYBOX_NPI_FILE := /vendor/lib64/npidevice/libcheckkeybox.so
 SYMLINK := $(TARGET_OUT_VENDOR)/lib64/libcheckkeybox.so
 
+CHECKKEYBOX_NPI_FILE32 := /vendor/lib/npidevice/libcheckkeybox.so
+SYMLINK32 := $(TARGET_OUT_VENDOR)/lib/libcheckkeybox.so
+
 LOCAL_POST_INSTALL_CMD := $(hide) \
 	mkdir -p $(TARGET_OUT_VENDOR)/lib/npidevice; \
 	rm -rf $(SYMLINK) ;\
-	ln -sf $(CHECKKEYBOX_NPI_FILE) $(SYMLINK);
+	ln -sf $(CHECKKEYBOX_NPI_FILE) $(SYMLINK);\
+	rm -rf $(SYMLINK32) ;\
+	ln -sf $(CHECKKEYBOX_NPI_FILE32) $(SYMLINK32);
 else
 ifeq ($(strip $(TARGET_ARCH)),x86_64)
 CHECKKEYBOX_NPI_FILE := /vendor/lib64/npidevice/libcheckkeybox.so
